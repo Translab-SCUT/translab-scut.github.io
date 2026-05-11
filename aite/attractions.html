@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AITE 2026 - Local Attractions</title>
+    <style>
+        :root {
+            --primary-color: #0a4d68;
+            --secondary-color: #088395;
+            --accent-color: #ff9f43;
+            --light-color: #e8f4f8;
+            --dark-color: #053742;
+            --text-dark: #2d3436;
+            --text-light: #636e72;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: #ffffff;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--dark-color) 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 15px rgba(5, 55, 66, 0.3);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        nav a {
+            color: rgba(255,255,255,0.9);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: var(--accent-color);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .page-hero {
+            margin-top: 70px;
+            height: 50vh;
+            background: linear-gradient(rgba(5, 55, 66, 0.3), rgba(10, 77, 104, 0.2)), url('asserts/fig/guangzhou.jpg') center/cover no-repeat;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(180deg, rgba(10, 77, 104, 0.3) 0%, rgba(8, 131, 149, 0.2) 100%);
+        }
+
+        .page-hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .page-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .page-hero p {
+            font-size: 1.2rem;
+            opacity: 0.95;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 100px 2rem 4rem;
+        }
+
+        .page-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .page-title h1 {
+            font-size: 2.8rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .page-title p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+        }
+
+        .attractions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .attraction-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(10, 77, 104, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .attraction-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(10, 77, 104, 0.12);
+        }
+
+        .attraction-image {
+            height: 200px;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 4rem;
+        }
+
+        .attraction-content {
+            padding: 1.5rem;
+        }
+
+        .attraction-content h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.8rem;
+            font-size: 1.4rem;
+        }
+
+        .attraction-content p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-bottom: 0.8rem;
+            line-height: 1.6;
+        }
+
+        .attraction-content .location {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .tips-section {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(10, 77, 104, 0.08);
+            margin-top: 2rem;
+        }
+
+        .tips-section h2 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--light-color);
+        }
+
+        .tips-section h3 {
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .tips-section p {
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            font-size: 1.05rem;
+        }
+
+        .tips-section ul {
+            margin-left: 1.5rem;
+        }
+
+        .tips-section li {
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+            font-size: 1.05rem;
+        }
+
+        footer {
+            background: linear-gradient(135deg, var(--dark-color) 0%, var(--primary-color) 100%);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        footer p {
+            opacity: 0.9;
+        }
+
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .container {
+                padding-top: 120px;
+            }
+
+            .tips-section {
+                padding: 2rem;
+            }
+
+            .attractions-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="nav-container">
+            <div class="logo">AITE 2026</div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="program.html">PROGRAM</a></li>
+                    <li><a href="organization.html">ORGANIZATION</a></li>
+                    <li><a href="cfp.html">CALL FOR ABSTRACTS</a></li>
+                    <li><a href="attending.html">ATTENDING</a></li>
+                    <li><a href="attractions.html">LOCAL ATTRACTIONS</a></li>
+                    <li><a href="https://2026.pricai.org/" target="_blank">PRICAI2026</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="page-hero">
+        <div class="page-hero-content">
+            <h1>Local Attractions</h1>
+            <p>Explore Guangzhou during your stay</p>
+        </div>
+    </section>
+
+    <div class="container">
+        <section class="tips-section">
+            <h2>To Be Determined</h2>
+            <p>The local attractions information will be announced soon. Please check back later for updates.</p>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 AITE Workshop. All rights reserved.</p>
+        <p>Organized by South China University of Technology & Pazhou Laboratory</p>
+    </footer>
+</body>
+</html>
