@@ -177,6 +177,60 @@
             border: 2px solid rgba(255,255,255,0.8);
         }
 
+        .dates-section {
+            background: white;
+            padding: 4rem;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(10, 77, 104, 0.08);
+        }
+
+        .dates-section h2 {
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+            font-size: 2.2rem;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .dates-list {
+            max-width: 720px;
+            margin: 0 auto;
+        }
+
+        .date-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 1.5rem;
+            padding: 1rem 1.5rem;
+            border-radius: 10px;
+            border-bottom: 1px solid rgba(10, 77, 104, 0.1);
+        }
+
+        .date-item:last-of-type {
+            border-bottom: none;
+        }
+
+        .date-item .date-label {
+            font-weight: 600;
+            color: var(--text-dark);
+            font-size: 1.05rem;
+        }
+
+        .date-item .date-value {
+            color: var(--secondary-color);
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .dates-note {
+            margin-top: 1.5rem;
+            color: var(--text-light);
+            font-size: 0.9rem;
+            text-align: center;
+            font-style: italic;
+        }
+
         .btn-secondary:hover {
             background: rgba(255,255,255,0.1);
             border-color: white;
@@ -391,6 +445,15 @@
             .about-section, .organizer-section {
                 padding: 2rem;
             }
+
+            .dates-section {
+                padding: 2rem;
+            }
+
+            .date-item {
+                flex-direction: column;
+                gap: 0.2rem;
+            }
         }
     </style>
 </head>
@@ -401,11 +464,6 @@
             <nav>
                 <ul>
                     <li><a href="index.html">HOME</a></li>
-                    <li><a href="program.html">PROGRAM</a></li>
-                    <li><a href="organization.html">ORGANIZATION</a></li>
-                    <li><a href="cfp.html">CALL FOR ABSTRACTS</a></li>
-                    <li><a href="attending.html">ATTENDING</a></li>
-                    <li><a href="attractions.html">LOCAL ATTRACTIONS</a></li>
                     <li><a href="https://2026.pricai.org/" target="_blank">PRICAI2026</a></li>
                 </ul>
             </nav>
@@ -417,6 +475,9 @@
             <h1>AI for Transportation and Energy</h1>
             <h2>AITE 2026 Workshop</h2>
             <div class="location">📍 Guangzhou, China</div>
+            <div class="hero-buttons">
+                <a href="https://easychair.org/conferences/?conf=owrml2026" target="_blank" class="btn btn-primary">Submit via EasyChair</a>
+            </div>
         </div>
     </section>
 
@@ -424,6 +485,33 @@
         <section class="about-section">
             <h2>About AITE 2026</h2>
             <p>AITE 2026 focuses on AI as a core enabler for prediction, control, optimization, and decision-making in complex transportation and energy systems. The workshop covers advances in deep learning, reinforcement learning, graph neural networks, LLMs, generative AI, and trustworthy AI applied to key challenges including energy storage, autonomous driving, vehicle-grid coordination, infrastructure planning, critical material supply chains, energy policy simulation, and AI energy management for data centers. It aims to connect core AI research with high-impact real-world applications and foster discussion on robust, scalable, and deployable intelligent systems.</p>
+        </section>
+
+        <section class="dates-section">
+            <h2>Important Dates</h2>
+            <div class="dates-list">
+                <div class="date-item">
+                    <span class="date-label">Paper Submission Deadline</span>
+                    <span class="date-value">September 30, 2026 (AoE)</span>
+                </div>
+                <div class="date-item">
+                    <span class="date-label">Acceptance Notification</span>
+                    <span class="date-value">October 19, 2026</span>
+                </div>
+                <div class="date-item">
+                    <span class="date-label">Camera-ready Deadline</span>
+                    <span class="date-value">October 30, 2026 (AoE)</span>
+                </div>
+                <div class="date-item">
+                    <span class="date-label">Workshop Date</span>
+                    <span class="date-value">November 17, 2026 (planned)</span>
+                </div>
+                <div class="date-item">
+                    <span class="date-label">PRICAI 2026 Main Conference</span>
+                    <span class="date-value">November 17–20, 2026</span>
+                </div>
+            </div>
+            <p class="dates-note">All submission deadlines are 23:59 Anywhere on Earth (AoE, UTC−12). The workshop date is subject to final scheduling confirmation by PRICAI 2026.</p>
         </section>
 
         <section class="organizer-section">
@@ -465,10 +553,7 @@
     <footer>
         <div class="footer-links">
             <a href="index.html">HOME</a>
-            <a href="program.html">PROGRAM</a>
-            <a href="organization.html">ORGANIZATION</a>
-            <a href="cfp.html">CALL FOR ABSTRACTS</a>
-            <a href="attending.html">ATTENDING</a>
+            <a href="https://2026.pricai.org/" target="_blank">PRICAI2026</a>
         </div>
         <p>&copy; 2026 AITE Workshop. All rights reserved.</p>
         <p>Organized by South China University of Technology & Pazhou Laboratory</p>
